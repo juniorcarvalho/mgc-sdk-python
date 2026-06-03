@@ -13,7 +13,9 @@ authors = [
     { name = "Kayque Govetri" }
 ]
 
-license = "MIT"
+license = { text = "Apache-2.0" }
+readme = "README.md"
+
 
 dependencies = [
     "httpx>=0.28.1",
