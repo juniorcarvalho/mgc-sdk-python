@@ -5,7 +5,8 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "mgc-sdk-python"
 version = "0.0.1"
-description = "Lightweight Python SDK for interacting with a cloud compute API (VMs, snapshots and backups)."
+
+description = "Unofficial Python SDK for Magalu Cloud"
 readme = "README.md"
 requires-python = ">=3.11"
 
@@ -13,9 +14,28 @@ authors = [
     { name = "Kayque Govetri" }
 ]
 
-license = { text = "Apache-2.0" }
-readme = "README.md"
+license = "Apache-2.0"
 
+keywords = [
+    "magalu",
+    "magalu-cloud",
+    "cloud",
+    "sdk",
+    "api",
+    "compute",
+    "virtual-machine",
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
 
 dependencies = [
     "httpx>=0.28.1",
@@ -23,8 +43,9 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/kayquegovetri/mgc-sdk-python"
-Repository = "https://github.com/kayquegovetri/mgc-sdk-python"
+Homepage = "https://github.com/kayqueGovetri/mgc-sdk-python"
+Repository = "https://github.com/kayqueGovetri/mgc-sdk-python"
+Issues = "https://github.com/kayqueGovetri/mgc-sdk-python/issues"
 
 [dependency-groups]
 dev = [
@@ -33,3 +54,9 @@ dev = [
     "pytest-cov>=7.1.0",
     "ruff>=0.15.15",
 ]
+
+[tool.setuptools.packages.find]
+include = ["mgc*"]
+
+[tool.setuptools]
+license-files = ["LICENSE"]
