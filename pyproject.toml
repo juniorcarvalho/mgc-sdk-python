@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=80", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mgc-sdk-python"
+version = "0.0.1"
+description = "Lightweight Python SDK for interacting with a cloud compute API (VMs, snapshots and backups)."
+readme = "README.md"
+requires-python = ">=3.11"
+
+authors = [
+    { name = "Kayque Govetri" }
+]
+
+license = "MIT"
+
+dependencies = [
+    "httpx>=0.28.1",
+    "pydantic>=2.13.4",
+]
+
+[project.urls]
+Homepage = "https://github.com/kayquegovetri/mgc-sdk-python"
+Repository = "https://github.com/kayquegovetri/mgc-sdk-python"
+
+[dependency-groups]
+dev = [
+    "mypy>=2.1.0",
+    "pytest>=9.0.3",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.15.15",
+]
