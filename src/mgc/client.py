@@ -6,7 +6,6 @@ from .transport import Transport
 
 
 class ApiKeyAuth(AuthProvider):
-
     def __init__(self, api_key: str):
         self._api_key = api_key
 
@@ -15,10 +14,9 @@ class ApiKeyAuth(AuthProvider):
             "X-API-Key": self._api_key,
         }
         return auth_headers
-    
+
 
 class Client:
-
     def __init__(self, *, api_key: str, config=None):
         self._config = config or ClientConfig()
 

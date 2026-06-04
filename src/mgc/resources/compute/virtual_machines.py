@@ -6,7 +6,7 @@ from src.mgc.transport import Transport
 class VirtualMachines:
     def __init__(self, transport: Transport):
         self._transport = transport
-    
+
     async def list(
         self,
         *,
@@ -60,30 +60,30 @@ class VirtualMachines:
         user_data: str | None = None,
         network: dict | None = None,
     ) -> dict[str, Any]:
-            payload = {
-                "name": name,
-                "image": {
-                    "id": image_id,
-                },
-                "machine_type": {
-                    "id": machine_type_id,
-                },
-                "ssh_key_name": ssh_key_name,
-            }
+        payload = {
+            "name": name,
+            "image": {
+                "id": image_id,
+            },
+            "machine_type": {
+                "id": machine_type_id,
+            },
+            "ssh_key_name": ssh_key_name,
+        }
 
-            if availability_zone:
-                payload["availability_zone"] = availability_zone
+        if availability_zone:
+            payload["availability_zone"] = availability_zone
 
-            if user_data:
-                payload["user_data"] = user_data
+        if user_data:
+            payload["user_data"] = user_data
 
-            if network:
-                payload["network"] = network
+        if network:
+            payload["network"] = network
 
-            return await self._transport.post(
-                "/v1/instances",
-                json=payload,
-            )
+        return await self._transport.post(
+            "/v1/instances",
+            json=payload,
+        )
 
     async def delete(
         self,
@@ -104,38 +104,29 @@ class VirtualMachines:
         instance_id: str,
     ) -> None:
 
-        await self._transport.post(
-            f"compute/v1/instances/{instance_id}/start"
-        )
+        await self._transport.post(f"compute/v1/instances/{instance_id}/start")
 
     async def stop(
         self,
         instance_id: str,
     ) -> None:
 
-        await self._transport.post(
-            f"compute/v1/instances/{instance_id}/stop"
-        )
-
+        await self._transport.post(f"compute/v1/instances/{instance_id}/stop")
 
     async def reboot(
         self,
         instance_id: str,
     ) -> None:
 
-        await self._transport.post(
-            f"compute/v1/instances/{instance_id}/reboot"
-        )
-    
+        await self._transport.post(f"compute/v1/instances/{instance_id}/reboot")
+
     async def suspend(
         self,
         instance_id: str,
     ) -> None:
 
-        await self._transport.post(
-            f"compute/v1/instances/{instance_id}/suspend"
-        )
-    
+        await self._transport.post(f"compute/v1/instances/{instance_id}/suspend")
+
     async def rename(
         self,
         instance_id: str,
@@ -163,4 +154,3 @@ class VirtualMachines:
                 }
             },
         )
-    

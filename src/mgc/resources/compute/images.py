@@ -6,7 +6,7 @@ from src.mgc.transport import Transport
 class Images:
     def __init__(self, transport: Transport):
         self._transport = transport
-    
+
     async def list(
         self,
         *,

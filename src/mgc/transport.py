@@ -15,9 +15,9 @@ def get_package_version() -> str:
     except PackageNotFoundError as error:
         print(error)
         return "0.0.0"
-    
-class Transport:
 
+
+class Transport:
     def __init__(
         self,
         *,
@@ -34,10 +34,7 @@ class Transport:
         )
 
     def _build_base_url(self) -> str:
-        return (
-            f"https://api.magalu.cloud/"
-            f"{self._config.region}"
-        )
+        return f"https://api.magalu.cloud/{self._config.region}"
 
     def _build_headers(self) -> dict[str, str]:
         return {
@@ -60,23 +57,17 @@ class Transport:
         )
         print(self._client.headers)
 
-        if not response.is_success and response.headers.get(
-                "content-type",
-                ""
-            ).startswith("application/json"):
-                raise Exception(response.json())
+        if not response.is_success and response.headers.get("content-type", "").startswith("application/json"):
+            raise Exception(response.json())
 
         if response.status_code == 204:
             return None
 
-        if response.headers.get(
-            "content-type",
-            ""
-        ).startswith("application/json"):
+        if response.headers.get("content-type", "").startswith("application/json"):
             return response.json()
-        
+
         return response.text
-    
+
     async def get(
         self,
         path: str,
@@ -87,7 +78,7 @@ class Transport:
             path,
             **kwargs,
         )
-    
+
     async def post(
         self,
         path: str,
