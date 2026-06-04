@@ -16,8 +16,6 @@ authors = [
     { name = "Kayque Govetri" }
 ]
 
-license = "Apache-2.0"
-
 keywords = [
     "magalu",
     "magalu-cloud",
