@@ -1,7 +1,7 @@
 # MGC SDK for Python
 
-[![PyPI](https://img.shields.io/pypi/v/mgc-sdk)](https://pypi.org/)
-[![Python](https://img.shields.io/pypi/pyversions/mgc-sdk)](https://pypi.org/)
+[![PyPI](https://img.shields.io/pypi/v/mgc-sdk-python)](https://pypi.org/)
+[![Python](https://img.shields.io/pypi/pyversions/mgc-sdk-python)](https://pypi.org/)
 [![License](https://img.shields.io/github/license/kayqueGovetri/mgc-sdk-python)](LICENSE)
 
 An unofficial, open-source Python SDK for interacting with the Magalu Cloud API.
