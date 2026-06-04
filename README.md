@@ -10,7 +10,7 @@ This project aims to provide a Pythonic and developer-friendly interface for Mag
 
 > **Disclaimer**
 >
-> This is an unofficial SDK and is not affiliated with, endorsed by, or maintained by Magalu Cloud. For the official SDKs and tools, visit the Magalu Cloud GitHub organization. :contentReference[oaicite:0]{index=0}
+> This is an unofficial SDK and is not affiliated with, endorsed by, or maintained by Magalu Cloud. For the official SDKs and tools, visit the Magalu Cloud GitHub organization.
 
 ## Features
 
@@ -78,7 +78,7 @@ Current implementation status:
 - [x] Instances
 - [x] Images
 - [x] Machine Types
-- [ ] Snapshots
+- [x] Snapshots
 
 ### Block Storage
 
@@ -199,12 +199,8 @@ ruff format .
 
 ## Related Projects
 
-- Official Magalu Cloud Go SDK :contentReference[oaicite:2]{index=2}
-- Official Magalu Cloud Organization :contentReference[oaicite:3]{index=3}
-
-## License
-
-This project is licensed under the MIT License.
+- Official Magalu Cloud Go SDK
+- Official Magalu Cloud Organization
 
 See the [LICENSE](LICENSE) file for details.
 
