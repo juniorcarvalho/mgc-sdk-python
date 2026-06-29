@@ -1,4 +1,4 @@
-from src.mgc.region import Region
+from mgc.region import Region
 
 
 def test_region_values():

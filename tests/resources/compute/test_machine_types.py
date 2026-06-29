@@ -1,6 +1,6 @@
 import asyncio
 
-from src.mgc.resources.compute.machine_types import MachineTypes
+from mgc.resources.compute.machine_types import MachineTypes
 
 
 def run(coro):

@@ -1,9 +1,9 @@
-from src.mgc.resources.compute.backups import Backups
-from src.mgc.resources.compute.compute import Compute
-from src.mgc.resources.compute.images import Images
-from src.mgc.resources.compute.machine_types import MachineTypes
-from src.mgc.resources.compute.snapshots import Snapshots
-from src.mgc.resources.compute.virtual_machines import VirtualMachines
+from mgc.resources.compute.backups import Backups
+from mgc.resources.compute.compute import Compute
+from mgc.resources.compute.images import Images
+from mgc.resources.compute.machine_types import MachineTypes
+from mgc.resources.compute.snapshots import Snapshots
+from mgc.resources.compute.virtual_machines import VirtualMachines
 
 
 def test_compute_initializes_compute_resources_with_same_transport(fake_transport):

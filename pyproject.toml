@@ -55,6 +55,7 @@ dev = [
 ]
 
 [tool.setuptools.packages.find]
+where = ["src"]
 include = ["mgc*"]
 
 [tool.ruff]

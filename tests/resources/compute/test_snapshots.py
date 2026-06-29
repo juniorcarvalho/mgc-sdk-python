@@ -2,7 +2,7 @@ import asyncio
 
 import pytest
 
-from src.mgc.resources.compute.snapshots import Snapshots
+from mgc.resources.compute.snapshots import Snapshots
 
 
 def run(coro):

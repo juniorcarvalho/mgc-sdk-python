@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from src.mgc.transport import Transport
+from mgc.transport import Transport
 
 
 class Snapshots:

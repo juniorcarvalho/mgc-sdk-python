@@ -2,7 +2,7 @@ import asyncio
 
 import pytest
 
-from src.mgc.resources.compute.virtual_machines import VirtualMachines
+from mgc.resources.compute.virtual_machines import VirtualMachines
 
 
 def run(coro):
