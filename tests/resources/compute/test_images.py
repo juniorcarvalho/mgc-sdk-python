@@ -1,6 +1,6 @@
 import asyncio
 
-from src.mgc.resources.compute.images import Images
+from mgc.resources.compute.images import Images
 
 
 def run(coro):

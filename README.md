@@ -15,9 +15,9 @@ This project aims to provide a Pythonic and developer-friendly interface for Mag
 
 - Pythonic API design
 - Async support using `httpx`
-- Typed models with Pydantic
+- Typed Python interfaces
 - Modular service architecture
-- Easy authentication using API Tokens
+- Easy authentication using API keys
 - Open-source and community-driven
 - Designed for automation, scripting, and backend applications
 
@@ -26,7 +26,13 @@ This project aims to provide a Pythonic and developer-friendly interface for Mag
 ### Using pip
 
 ```bash
-pip install mgc-sdk
+pip install mgc-sdk-python
+```
+
+### Using uv
+
+```bash
+uv add mgc-sdk-python
 ```
 
 ### Development installation
@@ -36,37 +42,40 @@ git clone https://github.com/kayqueGovetri/mgc-sdk-python.git
 
 cd mgc-sdk-python
 
-pip install -e .
+make sync-dev
 ```
 
 ## Quick Start
 
 ```python
-from mgc import MgcClient
+import asyncio
 
-client = MgcClient(
-    api_token="YOUR_API_TOKEN"
-)
+from mgc.client import Client
 
-instances = client.compute.instances.list()
 
-for instance in instances:
-    print(instance.name)
+async def main() -> None:
+    async with Client(api_key="YOUR_API_KEY") as client:
+        virtual_machines = await client.compute.virtual_machines.list()
+
+    print(virtual_machines)
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
 ```
 
 ## Authentication
 
-The SDK authenticates using a Magalu Cloud API Token.
+The SDK authenticates requests with a Magalu Cloud API key. Pass the key when
+creating the client:
 
 ```python
-from mgc import MgcClient
+from mgc.client import Client
 
-client = MgcClient(
-    api_token="YOUR_API_TOKEN"
+client = Client(
+    api_key="YOUR_API_KEY"
 )
 ```
-
-For information about generating API tokens, consult the official Magalu Cloud documentation. :contentReference[oaicite:1]{index=1}
 
 ## Supported Services
 
@@ -74,16 +83,17 @@ Current implementation status:
 
 ### Compute
 
-- [x] Instances
+- [x] Virtual Machines
 - [x] Images
 - [x] Machine Types
 - [x] Snapshots
+- [x] Backups
 
 ### Block Storage
 
-- [ ] Volumes
+- [x] Volumes
 - [ ] Snapshots
-- [ ] Volume Types
+- [x] Volume type lookup
 
 ### Networking
 
@@ -105,41 +115,53 @@ Current implementation status:
 
 > The roadmap evolves based on community contributions and API availability.
 
-## Async Example
-
-```python
-import asyncio
-
-from mgc import AsyncMgcClient
-
-
-async def main():
-    client = AsyncMgcClient(
-        api_token="YOUR_API_TOKEN"
-    )
-
-    instances = await client.compute.instances.list()
-
-    print(instances)
-
-
-asyncio.run(main())
-```
-
 ## Project Structure
 
 ```text
 mgc-sdk-python/
-├── mgc/
-│   ├── client/
-│   ├── compute/
-│   ├── networking/
-│   ├── models/
-│   ├── exceptions/
-│   └── utils/
-├── tests/
 ├── examples/
-└── docs/
+│   ├── block_storage/
+│   │   ├── snapshot/
+│   │   └── volume/
+│   └── compute/
+│       ├── backup/
+│       ├── images/
+│       ├── snapshot/
+│       └── virtual_machine/
+├── src/
+│   └── mgc/
+│       ├── resources/
+│       │   ├── block_storage/
+│       │   │   ├── block_storage.py
+│       │   │   ├── snapshots.py
+│       │   │   └── volumes.py
+│       │   └── compute/
+│       │       ├── backups.py
+│       │       ├── compute.py
+│       │       ├── images.py
+│       │       ├── machine_types.py
+│       │       ├── snapshots.py
+│       │       └── virtual_machines.py
+│       ├── __init__.py
+│       ├── auth.py
+│       ├── client.py
+│       ├── config.py
+│       ├── exceptions.py
+│       ├── region.py
+│       └── transport.py
+├── tests/
+│   ├── resources/
+│   │   ├── block_storage/
+│   │   └── compute/
+│   ├── conftest.py
+│   ├── test_client.py
+│   ├── test_config.py
+│   ├── test_region.py
+│   └── test_transport.py
+├── LICENSE
+├── Makefile
+├── pyproject.toml
+├── README.md
 ```
 
 ## Why This Project?
@@ -170,19 +192,19 @@ You can contribute by:
 ### Running tests
 
 ```bash
-pytest
+make test
 ```
 
 ### Linting
 
 ```bash
-ruff check .
+make lint
 ```
 
-### Formatting
+### Formatting check
 
 ```bash
-ruff format .
+make ruff-format-check
 ```
 
 ## Roadmap

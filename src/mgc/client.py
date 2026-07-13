@@ -1,6 +1,7 @@
-from src.mgc.config import ClientConfig
+from mgc.config import ClientConfig
 
 from .auth import AuthProvider
+from .resources.block_storage.block_storage import BlockStorage
 from .resources.compute.compute import Compute
 from .transport import Transport
 
@@ -19,7 +20,7 @@ class ApiKeyAuth(AuthProvider):
     def get_access_token(self) -> str:
         """Return the API key authentication header."""
         auth_headers = {
-            "X-API-Key": self._api_key,
+            "x-api-key": self._api_key,
         }
         return auth_headers
 
@@ -42,6 +43,7 @@ class Client:
         )
 
         self.compute = Compute(self._transport)
+        self.block_storage = BlockStorage(self._transport)
 
     async def close(self) -> None:
         """Close the underlying HTTP transport."""

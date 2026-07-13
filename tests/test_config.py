@@ -2,8 +2,8 @@ from dataclasses import FrozenInstanceError
 
 import pytest
 
-from src.mgc.config import ClientConfig
-from src.mgc.region import Region
+from mgc.config import ClientConfig
+from mgc.region import Region
 
 
 def test_client_config_defaults():

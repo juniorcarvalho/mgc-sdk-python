@@ -3,10 +3,10 @@ from importlib.metadata import PackageNotFoundError
 
 import pytest
 
-from src.mgc import transport as transport_module
-from src.mgc.config import ClientConfig
-from src.mgc.region import Region
-from src.mgc.transport import Transport, get_package_version
+from mgc import transport as transport_module
+from mgc.config import ClientConfig
+from mgc.region import Region
+from mgc.transport import Transport, get_package_version
 
 
 def run(coro):
